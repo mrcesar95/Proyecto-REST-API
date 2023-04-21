@@ -1,0 +1,20 @@
+{
+  "name": "sandbox_documentacion",
+  "version": "0.0.1",
+  "description": "Sandbox para el aprendizaje de documentación",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Paulo Coronado",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.13",
+    "ts-node": "^10.9.1"
+  }
+}
