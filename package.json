@@ -4,7 +4,9 @@
   "description": "Sandbox para el aprendizaje de documentación",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "ts-node src/index.ts",
+    "docs": "typedoc --entryPointStrategy expand ./src"
   },
   "author": "Paulo Coronado",
   "license": "ISC",
@@ -19,6 +21,7 @@
     "@types/node": "^18.15.13",
     "@types/swagger-jsdoc": "^6.0.1",
     "@types/swagger-ui-express": "^4.1.3",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.24.6"
   }
 }
