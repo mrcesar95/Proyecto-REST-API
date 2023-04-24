@@ -2,8 +2,7 @@
 
 import swaggerJSDoc from "swagger-jsdoc";
 
-
-const swaggerOptions={
+export const swaggerOptions={
 
     definition:{
         openapi:"3.0.0",
@@ -14,7 +13,7 @@ const swaggerOptions={
         },
         servers:[
             {
-                url:"http:localhost:3000",
+                url:"http://localhost:3000",
                 description:"Servidor local de documentación"
             }
         ]
@@ -22,3 +21,5 @@ const swaggerOptions={
 
     apis:["src/index.ts", "./swagger/*.swagger.ts"]
 }
+
+export const swaggerSpec=swaggerJSDoc(swaggerOptions)
