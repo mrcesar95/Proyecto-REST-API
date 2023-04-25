@@ -10,60 +10,60 @@ import express,{Application, Request, Response} from 'express'
  */
 class App{
 
-    //Atributos
-    public app:Application
-    private server:any
+	//Atributos
+	public app:Application
+	private server:any
 
-    /**
+	/**
      * Método constructor de la clase
      * 
      * @author Paulo César Coronado
      */
-    constructor(){
+	constructor(){
 
-        /**
+		/**
          * Express es la biblioteca para definir API en el ecosistema de Node.js
          */
-        this.app=express()
+		this.app=express()
 
-        this.app.use(express.json())
-        this.app.use(
-            "/api-docs",
-            swaggerUi.serve,
-            swaggerUi.setup(swaggerSpec)
-        )
+		this.app.use(express.json())
+		this.app.use(
+			'/api-docs',
+			swaggerUi.serve,
+			swaggerUi.setup(swaggerSpec)
+		)
 
-        this.routes()
-    }
+		this.routes()
+	}
 
-    private routes():void{
+	private routes():void{
         
-        this.app.get(
-            "/",
-            (req:Request, res:Response)=>{
-                res.send("Bienvenidos a typescript")
-            }
-        )
+		this.app.get(
+			'/',
+			(req:Request, res:Response)=>{
+				res.send('Bienvenidos a typescript')
+			}
+		)
 
-        this.app.post(
-            "/paciente",
-            (req:Request, res:Response)=>{
-                res.send("Bienvenidos a typescript")
-            }
-        )
-    }
+		this.app.post(
+			'/paciente',
+			(req:Request, res:Response)=>{
+				res.send('Bienvenidos a typescript')
+			}
+		)
+	}
 
-    public start():void{
+	public start():void{
 
-        this.server=this.app.listen(
-            3000,
-            ()=>{console.log("El servidor está escuchando en el puerto 3000")}
-            )
-    }
+		this.server=this.app.listen(
+			3000,
+			()=>{console.log('El servidor está escuchando en el puerto 3000')}
+		)
+	}
 
-    public close():void{
-        this.server.close()
-    }
+	public close():void{
+		this.server.close()
+	}
 
 }
 
