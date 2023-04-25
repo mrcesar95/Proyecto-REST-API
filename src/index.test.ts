@@ -7,7 +7,7 @@ describe(
 	'GET /',
 	()=>{
         
-		var app:App
+		let app:App        
         
         beforeAll(
             ()=>{
@@ -17,7 +17,9 @@ describe(
         )
 
         afterAll(
-            app.close()
+            ()=>{
+                app.close()
+            }           
         )
 
         test(

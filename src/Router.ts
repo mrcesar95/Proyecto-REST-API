@@ -41,7 +41,7 @@ class App{
 		this.app.get(
 			'/',
 			(req:Request, res:Response)=>{
-				res.send('Bienvenidos a typescript')
+				res.send('Bienvenidos a la IPS AteneaIPS')
 			}
 		)
 
