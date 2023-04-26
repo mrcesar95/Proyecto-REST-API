@@ -36,12 +36,15 @@ class App{
 		this.routes()
 	}
 
+	/**
+	 * Definir y agregar las rutas de la API con express
+	 */
 	private routes():void{
         
 		this.app.get(
 			'/',
 			(req:Request, res:Response)=>{
-				res.send('Bienvenidos a la IPS AteneaIPS')
+				res.send('Bienvenidos a typescript')
 			}
 		)
 

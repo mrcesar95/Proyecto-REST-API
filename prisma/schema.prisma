@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Paciente {
+  cedula          Int      @id
+  nombre          String
+  apellido        String
+  fechaNacimiento DateTime
+  telefono        String
+  Cita            Cita[]
+}
+
+model Medico {
+  tarjetaProfesional Int    @id
+  nombre             String
+  apellido           String
+  consultorio        String
+  correo             String
+  Cita               Cita[]
+
+  Especialidad               Especialidad? @relation(fields: [idEspecialidad], references: [idEspecialidad])
+  idEspecialidad Int?
+}
+
+model Cita {
+  idCita Int      @id
+  fecha  DateTime
+
+  Paciente                 Paciente? @relation(fields: [pacienteCedula], references: [cedula])
+  pacienteCedula           Int?
+  Medico                   Medico?   @relation(fields: [medicoTarjetaProfesional], references: [tarjetaProfesional])
+  medicoTarjetaProfesional Int?
+}
+
+model Especialidad {
+  idEspecialidad Int      @id
+  nombre         String
+  Medico         Medico[]
+}
