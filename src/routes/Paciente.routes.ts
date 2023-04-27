@@ -32,4 +32,4 @@ class PacienteRouter{
     }
 }
 
-export default PacienteRouter
+export default new PacienteRouter().router
