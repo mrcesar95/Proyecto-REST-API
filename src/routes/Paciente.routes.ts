@@ -32,4 +32,5 @@ class PacienteRouter{
     }
 }
 
+
 export default new PacienteRouter().router
