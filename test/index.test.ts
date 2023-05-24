@@ -1,34 +1,22 @@
-//1. Importar las biblotecas
-
 import request from 'supertest'
 import App from '../src/App'
 
-describe(
-	'GET /',
-	()=>{
-        
-		let app:App        
-        
-        beforeAll(
-            ()=>{
-                app=new App()
-                app.start()
-            }
-        )
+describe('Routes', () => {
+  let app: App
 
-        afterAll(
-            ()=>{
-                app.close()
-            }           
-        )
+  beforeAll(() => {
+    app = new App()
+    app.start()
+  })
 
-        test(
-            'Debe devolver un mensaje',
-            async ()=>{
-                const res = await request(app.app).get('/')
-                expect (res.statusCode).toEqual(200)
-                expect (res.text).toEqual('Bienvenidos a typescript')
-            }
-        )
-	}
-)
+  afterAll(() => {
+    app.close()
+  })
+
+  
+  it('Debe retornar 404 ya que no existe la ruta', async () => {
+    const response = await request(app.app).get('/non-existent-route')
+    expect(response.status).toBe(404)
+    expect(response.body).toEqual({ message: 'Recurso no encontrado' })
+  })
+})

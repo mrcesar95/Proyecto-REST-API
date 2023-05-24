@@ -1,22 +1,26 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import swaggerUi from 'swagger-ui-express'
 import { swaggerSpec } from './swagger.conf'
-import express,{Application, Request, Response} from 'express'
+import express,{Application, NextFunction, Request, Response} from 'express'
+import {Prisma, PrismaClient} from '@prisma/client'
 
 import PacienteRouter from './routes/Paciente.routes'
 import MedicoRouter from './routes/Medico.routes'
+import especialidadRoutes from './routes/EspecialidadRouter'
+import citaRouter from './routes/CitaRouter'
 import FormularioRouter from './routes/Formulario.routes'
 import cors from 'cors'
 
 /**
  * Clase principal de la API. Define las rutas de la API
  * 
- * @author Paulo César Coronado
+ * @author Cesar Molina
  * @description Clase inicial de ejemplo para manejar rutas y documentación
  */
 class App{
 
 	//Atributos
+	private prismaClient:PrismaClient
 	public app:Application
 	private server:any
 	
@@ -24,7 +28,7 @@ class App{
 	/**
      * Método constructor de la clase
      * 
-     * @author Paulo César Coronado
+     * @author Cesar Molina
      */
 	constructor(){
 
@@ -41,6 +45,7 @@ class App{
 		)
 		this.app.use(cors())
 		this.routes()
+		this.prismaClient = new PrismaClient()
 	}
 
 	/**
@@ -51,6 +56,13 @@ class App{
         this.app.use('/', PacienteRouter)
 		this.app.use('/', MedicoRouter)
 		this.app.use('/', FormularioRouter)
+		this.app.use('/', especialidadRoutes)
+		this.app.use('/', citaRouter)
+		this.app.use(
+			(req:Request,res:Response,next:NextFunction)=>{
+				res.status(404).json({message: 'No encontrado'})
+				next()
+			})
 
 		
 	}
