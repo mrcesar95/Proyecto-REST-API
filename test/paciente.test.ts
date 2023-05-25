@@ -16,7 +16,7 @@ describe('Routes', () => {
   })
 
   /**Prueba unitaria para la ruta que lista los medicos.*/
-  it('Debe listar los pacientes', async () => {
+  it('Listar los pacientes', async () => {
     const response = await request(app.app).get('/Paciente')
     expect(response.statusCode).toEqual(200)
     expect(response.body.length).toBeGreaterThan(0)
@@ -26,11 +26,11 @@ describe('Routes', () => {
   /**Prueba unitaria para la ruta que intenta crear un paciente que ya existe.*/
   it('No Debe crear un paciente', async () => {
     const nuevoPaciente = {
-        cedula: 161616,
+        cedula: 17197755,
         nombre: test,
         apellido: test,
-        fechaNacimiento: '27-05-2023',
-        telefono: 154545
+        fechaNacimiento: '06-01-1948',
+        telefono: 3112317
     }
     const response = await request(app.app)
       .post('/Paciente')

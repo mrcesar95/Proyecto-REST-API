@@ -14,7 +14,7 @@ describe('Routes', () => {
   })
 
   
-  it('Debe retornar 404 ya que no existe la ruta', async () => {
+  it('Retornar 404 porque no existe la ruta', async () => {
     const response = await request(app.app).get('/non-existent-route')
     expect(response.status).toBe(404)
     expect(response.body).toEqual({ message: 'Recurso no encontrado' })

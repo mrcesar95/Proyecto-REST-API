@@ -63,9 +63,9 @@ class CitaController extends Controller{
                 },
               })
               /*
-                Primero llama a todas las citas existentes y las añade a la variable citas
-                Posteriormente se toma citas en un map en donde en modo json crea nombres representativos
-                de lo que se mostrara tomando los datos de las citas uniendo los datos relacionados con las otras tablas
+                Primero llama a las citas existentes y las añade a la variable citas
+                Posteriormente toma citas en un map en donde en un JSON crea nombres 
+                de lo que mostrara tomando los datos de las citas uniendo los datos relacionados con las otras tablas
               */
               const citas = resul.map((cita) => ({
                 Nombre_Medico: cita.Medico?.nombre,

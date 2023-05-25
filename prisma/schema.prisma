@@ -5,18 +5,13 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator jsonSchema {
-  provider = "prisma-json-schema-generator"
-}
-
-
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model Paciente {
-  cedula          Int      @id
+  cedula          Int      @id @default(autoincrement())
   nombre          String
   apellido        String
   fechaNacimiento DateTime
@@ -25,29 +20,27 @@ model Paciente {
 }
 
 model Medico {
-  tarjetaProfesional Int    @id
+  tarjetaProfesional Int           @id
   nombre             String
   apellido           String
   consultorio        String
   correo             String
+  idEspecialidad     Int?
   Cita               Cita[]
-
-  Especialidad               Especialidad? @relation(fields: [idEspecialidad], references: [idEspecialidad])
-  idEspecialidad Int?
+  Especialidad       Especialidad? @relation(fields: [idEspecialidad], references: [idEspecialidad])
 }
 
 model Cita {
-  idCita Int      @id
-  fecha  DateTime
-
-  Paciente                 Paciente? @relation(fields: [pacienteCedula], references: [cedula])
-  pacienteCedula           Int?
-  Medico                   Medico?   @relation(fields: [medicoTarjetaProfesional], references: [tarjetaProfesional])
-  medicoTarjetaProfesional Int?
+  idcita             Int       @id @default(autoincrement())
+  fecha              DateTime
+  pacienteCedula     Int?
+  tarjetaProfesional Int?
+  Medico             Medico?   @relation(fields: [tarjetaProfesional], references: [tarjetaProfesional])
+  Paciente           Paciente? @relation(fields: [pacienteCedula], references: [cedula])
 }
 
 model Especialidad {
-  idEspecialidad Int      @id
-  nombre         String
+  idEspecialidad Int      @id @default(autoincrement())
+  nombre         String   @unique
   Medico         Medico[]
 }

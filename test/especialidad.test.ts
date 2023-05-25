@@ -16,16 +16,16 @@ describe('Routes', () => {
   })
   
     /**Prueba unitaria para la ruta que lista las especialidades.*/
-  it('Debe listar las especialidades', async () => {
+  it('Listar las especialidades', async () => {
     const response = await request(app.app).get('/Especialidad')
     expect(response.statusCode).toEqual(200)
     expect(response.body.length).toBeGreaterThan(0)
   })
 
   /**Prueba unitaria para la ruta que intenta crear una especialidad que ya existe.*/
-  it('No debe crear una nueva especialidad', async () => {
+  it('No crear una nueva especialidad', async () => {
     const nuevaEspecialidad = {
-        nombre: 'Pediatria'
+        nombre: 'Odontología',
     }
     const response = await request(app.app)
       .post('/Especialidad')
