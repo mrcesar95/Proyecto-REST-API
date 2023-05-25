@@ -16,7 +16,7 @@ describe('Routes', () => {
   })
 
   /**Prueba unitaria para la ruta que lista los medicos.*/
-  it('Debe listar los medicos', async () => {
+  it('Listar los medicos', async () => {
     const response = await request(app.app).get('/Medico')
     expect(response.statusCode).toEqual(200)
     expect(response.body.length).toBeGreaterThan(0)
@@ -24,14 +24,14 @@ describe('Routes', () => {
 
   
   /**Prueba unitaria para la ruta que intenta crear un medico que ya existe.*/
-  it('No Debe crear un medico', async () => {
+  it('No crear un medico', async () => {
     const nuevoMedico = {
-        tarjetaProfesional: 456659656,
-		nombre: 'Juan',
-		apellido: 'Garcia',
-		consultorio: '201',
-		correo: 'test@test.com',
-		especialidad: 'Pediatria'
+        tarjetaProfesional: 5928174306,
+		nombre: 'Pedro',
+		apellido: 'Gomez',
+		consultorio: '401',
+		correo: 'pedro@gmail.com',
+		especialidad: 'Odontologia'
     }
     const response = await request(app.app)
       .post('/Medico')

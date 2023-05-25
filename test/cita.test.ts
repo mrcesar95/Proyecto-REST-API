@@ -17,18 +17,18 @@ describe('Routes', () => {
     })
 
     /**Prueba unitaria para la ruta que lista las citas.*/
-    it('Debe listar las citas', async () => {
+    it('Listar las citas', async () => {
     const response = await request(app.app).get('/Cita')
     expect(response.statusCode).toEqual(200)
     expect(response.body.length).toBeGreaterThan(0)
     })
     
     /**Prueba unitaria para la ruta que intenta crear una cita que ya existe.*/
-      it('No Debe crear una cita', async () => {
+      it('No crear una cita', async () => {
       const nuevaCita = {
-      fecha: '27-05-2023',
-      pacienteCdula: 454545,
-      tarjetaProfesional: 595951,
+      fecha: '24-05-2023',
+      pacienteCdula: 1015457332,
+      tarjetaProfesional: 8742319056,
       }
       const response = await request(app.app)
       .post('/Cita')

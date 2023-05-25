@@ -13,7 +13,7 @@ import cors from 'cors'
 
 /**
  * Clase principal de la API. Define las rutas de la API
- * 
+ * Tomando como ejemplo el repositorio de API-IPS-BACK de fabian001254
  * @author Cesar Molina
  * @description Clase inicial de ejemplo para manejar rutas y documentación
  */
